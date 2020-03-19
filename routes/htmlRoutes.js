@@ -10,6 +10,21 @@ module.exports = function(app) {
       });
     });
   });
+  app.get("/dashboard", function(req, res) {
+    db.Example.findAll({}).then(function(dbExamples) {
+      res.render("dashboard", {
+        examples: dbExamples
+      });
+    });
+  });
+
+  app.get("/battle", function(req, res) {
+    db.Example.findAll({}).then(function(dbExamples) {
+      res.render("battle", {
+        examples: dbExamples
+      });
+    });
+  });
 
   // Load example page and pass in an example by id
   app.get("/example/:id", function(req, res) {

@@ -1,0 +1,28 @@
+<div id="login">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+          <img src="/images/gryffindor.png" alt=""  title="gryffindor">
+      </div>
+      <div class="col-8">
+          <h2>List of Characters and Stats:</h2>
+          {{#each examples}}
+            <h2>Character: <span>{{this.text}}</span></h2>
+            <ul class="list-group">
+                <li class="list-group-item">{{this.description}}</li>
+                <li class="list-group-item">{{this.createdAt}}</li>
+            </ul>
+          {{/each}}
+      </div>
+      <div class="col">
+          <p>Add Character</p>
+          <button type="button" class="btn btn-outline-primary">+</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-8 offset-6">
+        <a href="battle" class="btn btn-danger">Fight</a>
+      </div>
+    </div>
+  </div>
+</div>
