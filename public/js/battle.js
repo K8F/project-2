@@ -2,6 +2,8 @@ var $spellOneBtn = $("#spellOne");
 var $spellTwoBtn = $("#spellTwo");
 var $spellThreeBtn = $("#spellThree");
 
+var $leftArrow = $("#leftArrow");
+
 var $battleEventsDiv = $("#battleEvents")
 
 $spellOneBtn.on("click", function() {
@@ -13,4 +15,8 @@ $spellTwoBtn.on("click", function() {
 $spellThreeBtn.on("click", function() {
   $battleEventsDiv.text("Spell 3 activate");
   $('#myModal').modal('toggle');
+})
+
+$leftArrow.on("click", function() {
+  alert("Go to the room at the left!");
 })

@@ -3,7 +3,7 @@
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <p class="float-right">HP:<span id="enemyHP"></span></p>
+                    <p class="float-right text-light">HP:<span id="enemyHP"></span></p>
                 </div>
                 <div class="col-4">
                     <div class="battleCharacters ml-5">
@@ -14,28 +14,30 @@
             <div class="row">
                 <div class="col-2">
                     <div class="battleCharacters">
-                        <img src="/images/wizardIcon.svg" class="img-fluid">
+                        <img src="/images/wizardIcon.svg" class="img-fluid" style="max-width: 200%;">
                     </div>
                 </div>
-                <div class="col">
-                    <p class="align-text-bottom ml-0">HP:<span id="yourHP"></span></p>
+                <div class="col pl-5">
+                    <p class="align-text-bottom ml-0 text-light">HP:<span id="yourHP"></span></p>
                 </div>
             </div>
-            <div class="row">
-                <div class="col border rounded">
+            <div class="row py-3">
+                <div id="battleScreenText" class="col border rounded text-light">
                     <p id="battleEvents">Hello world</p>
                 </div>
             </row>
         </div>
     </div>
-    <div class="container">
+        <div class="container">
             <div class="row">
-                <div id="spellOne" class="col btn btn-warning btn-lg">Spell 1</div>
-                <div id="spellTwo" class="col btn btn-danger btn-lg">Spell 2</div>
+                <img id="spellOne" src="/images/fire-ray.png" class="icons col btn btn-success mx-auto">
+                <img id="spellTwo" src="/images/moebius-star.png" class="icons col btn btn-warning mx-auto">
+                <img id="spellThree" src="/images/skull-bolt.png" class="icons col btn btn-danger mx-auto">
+                <img id="spellDefend" src="/images/magic-shield.png" class="icons col btn btn-light mx-auto">
+                <img id="spellHeal" src="/images/healing.png" class="icons col btn btn-info mx-auto">
             </div>
             <div class="row">
-                <div id="spellThree" class="col btn btn-success btn-lg">Spell 3</div>
-                <a href="dashboard" class="col btn btn-primary btn-lg">Run</a>
+                <a href="dashboard" class="col btn btn-dark ">Run</a>
             </div>
         </div>
     </div>
@@ -47,13 +49,18 @@
       <div class="modal-body">
         <h1>Results:</h1>
         <h2 id="resultModalBody">You won!/lost!/Ran away successfully!/Can't Run!</h2>
+
+        <p class="text-center"><span id="upArrow" class="btn">&uarr;</span></p>
+        <p class="text-center"><span id="leftArrow" class="btn"> &larr;</span> Enter which room? <span id="rightArrow" class="btn"> &rarr;</span</p>
+        <p class="text-center"><span id="homeBtn" class="btn"><i class="fa fa-home"></i></span></p>
+        
       </div>
     </div>
   </div>
 </div>
-
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<div id="bg">
+    <img id="bgImg" src="/images/battleBackground.jpg" alt="">
+</div>
 
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>

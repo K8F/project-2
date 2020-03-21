@@ -5,6 +5,7 @@
 
 .jumbotron {
     margin-bottom: 0px;
+    background-color: #e9ebef54;
 }
 
 #login,
@@ -61,4 +62,13 @@
 .battleCharacters {
     max-width: 100px;
     max-height: 200px;
+}
+
+#battleScreenText {
+    background-color: lightslategray;
+}
+
+.icons {
+    max-width: 100px;
+    max-height: 100px;
 }
