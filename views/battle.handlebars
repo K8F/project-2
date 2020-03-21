@@ -1,23 +1,66 @@
 <div id="battle">
     <div class="jumbotron">
         <div class="container">
-            <h1 class="display-4">Hello, world!</h1>
-        <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-        <hr class="my-4">
-        <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-        <p class="lead">
-            <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-        </p>
-        </div>
-        <div class="container">
-                <div class="row">
-                    <div class="col btn btn-warning btn-lg">Spell 1</div>
-                    <div class="col btn btn-danger btn-lg">Spell 2</div>
+            <div class="row">
+                <div class="col">
+                    <p class="float-right">HP:<span id="enemyHP"></span></p>
                 </div>
-                <div class="row">
-                    <div class="col btn btn-success btn-lg">Spell 3</div>
-                    <a href="dashboard" class="col btn btn-primary btn-lg">Run</a>
+                <div class="col-4">
+                    <div class="battleCharacters ml-5">
+                        <img src="/images/deathEaterIcon.png" class="img-fluid">
+                    </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-2">
+                    <div class="battleCharacters">
+                        <img src="/images/wizardIcon.svg" class="img-fluid">
+                    </div>
+                </div>
+                <div class="col">
+                    <p class="align-text-bottom ml-0">HP:<span id="yourHP"></span></p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col border rounded">
+                    <p id="battleEvents">Hello world</p>
+                </div>
+            </row>
+        </div>
+    </div>
+    <div class="container">
+            <div class="row">
+                <div id="spellOne" class="col btn btn-warning btn-lg">Spell 1</div>
+                <div id="spellTwo" class="col btn btn-danger btn-lg">Spell 2</div>
+            </div>
+            <div class="row">
+                <div id="spellThree" class="col btn btn-success btn-lg">Spell 3</div>
+                <a href="dashboard" class="col btn btn-primary btn-lg">Run</a>
+            </div>
+        </div>
     </div>
 </div>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <h1>Results:</h1>
+        <h2 id="resultModalBody">You won!/lost!/Ran away successfully!/Can't Run!</h2>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<script src="/js/battle.js"></script>

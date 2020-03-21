@@ -4,7 +4,6 @@
 }
 
 .jumbotron {
-    height: 100vh;
     margin-bottom: 0px;
 }
 
@@ -57,4 +56,9 @@
     min-width: 50%;
     min-height: 50%;
     z-index: -1;
+}
+
+.battleCharacters {
+    max-width: 100px;
+    max-height: 200px;
 }

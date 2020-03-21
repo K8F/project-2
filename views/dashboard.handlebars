@@ -27,3 +27,37 @@
 <div id="bg">
     <img id="bgImg" src="/images/scrollList.jpg" alt="">
 </div>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <form class="form-inline">
+          <div class="form-group mb-2">
+            <label for="addCharName" class="sr-only">Add Character</label>
+            <input type="text" readonly class="form-control-plaintext" id="addCharName" value="Name:">
+          </div>
+          <div class="form-group mx-sm-3 mb-2">
+            <label for="charName" class="sr-only"></label>
+            <input type="text" class="form-control" id="charName" placeholder="Input name here">
+          </div>
+          <button id="saveChar" type="submit" class="btn btn-primary mb-2">Create Character</button>
+          <button type="button" class="btn btn-secondary mb-2" data-dismiss="modal">Cancel</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<script src="/js/dashboard.js"></script>
