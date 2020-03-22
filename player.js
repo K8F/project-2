@@ -23,7 +23,6 @@ var Player = function (id, name, intelligence, hitpoints, defense, experience, h
 var test = new Player (1, "kate", 5, 100, 0, 2, "Hufflepuff", 0, 120, []);
 
 console.log(test);
-var damage=10;
 
 var Combat={
     playerAttackEasy: function(){
