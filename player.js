@@ -35,7 +35,9 @@ var Combat={
         
         if (deathEaterArray[0].hitpoints <= 0){
             alert("you win!")
-        } else{
+        } else if(test.defense > 0){
+            test.defense--}
+            else{
             Combat.opponentAttack();
         }
         }
@@ -61,10 +63,12 @@ var Combat={
 
         };
         if (deathEaterArray[0].hitpoints <= 0){
-                alert("you win!")
-            } else{
-                Combat.opponentAttack();
-            };
+            alert("you win!")
+        } else if(test.defense > 0){
+            test.defense--}
+            else{
+            Combat.opponentAttack();
+        }
 
     },
 
@@ -87,11 +91,11 @@ var Combat={
 
         if (deathEaterArray[0].hitpoints <= 0){
             alert("you win!")
-        } else{
+        } else if(test.defense > 0){
+            test.defense--}
+            else{
             Combat.opponentAttack();
-            
         };
-
     },
 
     playerDefend: function (){
@@ -101,7 +105,7 @@ var Combat={
             if (x===1){
                 console.log("true")
                 test.defense=Math.floor(Math.random()*3+1)
-                console.log("you're safe! player has this many rounds: " + test.defense)
+                console.log("you're safe! player has extra rounds: " + test.defense)
 
             }
             else if (deathEaterArray[0].hitpoints <= 0){
@@ -136,9 +140,11 @@ var Combat={
 
         if (deathEaterArray[0].hitpoints <= 0){
             alert("you win!")
-        } else{
+        } else if(test.defense > 0){
+            test.defense--}
+            else{
             Combat.opponentAttack();
-        };
+        }
 
     }, 
 
