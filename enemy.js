@@ -91,7 +91,7 @@ function getDeathEaters() {
                 if (response[i].deathEater === true) {
                    // deathEaterArray.push({ name: response[i].name, });
                    // use random
-                    deathEaterArray.push(new DeathEater(i, response[i].name, 100 + i, 50))
+                    deathEaterArray.push(new DeathEater(i, response[i].name, 5, 100+i))
                 };
 
                                
