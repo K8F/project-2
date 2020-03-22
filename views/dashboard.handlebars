@@ -1,28 +1,63 @@
-<div id="login">
+<div id="dashboard">
   <div class="container">
     <div class="row">
-      <div class="col">
-          <img src="/images/gryffindor.png" alt=""  title="gryffindor">
-      </div>
-      <div class="col-8">
-          <h2>List of Characters and Stats:</h2>
+        <div class="col-md-auto col-sm-auto col-auto pt-5 mx-auto">
+          <img class="mx-auto" src="/images/genericHouse.png" alt=""  title="gryffindor" style="max-width: 200px; max-height: 200px;">
+          <p>Add Character</p>
+          <button id="addCharacter" type="button" class="btn btn-outline-primary mx-auto">+</button>
+        </div>
+        <div id="charList" class="col-md-8 col-sm-12 pt-5">
+          <h3>List of Characters and Stats:</h3>
           {{#each examples}}
-            <h2>Character: <span>{{this.text}}</span></h2>
-            <ul class="list-group">
+            <h4>Character: <span>{{this.text}}</span></h4>
+            <ul class="list-group list-group-flush">
                 <li class="list-group-item">{{this.description}}</li>
                 <li class="list-group-item">{{this.createdAt}}</li>
             </ul>
           {{/each}}
-      </div>
-      <div class="col">
-          <p>Add Character</p>
-          <button type="button" class="btn btn-outline-primary">+</button>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-8 offset-6">
-        <a href="battle" class="btn btn-danger">Fight</a>
+          <div class="row">
+          <div class="mx-auto" style="width: 5%;">
+            <a href="battle" class="btn btn-danger">Fight</a>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </div>
+<div id="bg">
+    <img id="bgImg" src="/images/scrollList.jpg" alt="">
+</div>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <form class="form-inline">
+          <div class="form-group mb-2">
+            <label for="addCharName" class="sr-only">Add Character</label>
+            <input type="text" readonly class="form-control-plaintext" id="addCharName" value="Name:">
+          </div>
+          <div class="form-group mx-sm-3 mb-2">
+            <label for="charName" class="sr-only"></label>
+            <input type="text" class="form-control" id="charName" placeholder="Input name here">
+          </div>
+          <button id="saveChar" type="submit" class="btn btn-primary mb-2">Create Character</button>
+          <button type="button" class="btn btn-secondary mb-2" data-dismiss="modal">Cancel</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Latest compiled and minified CSS -->
+{{!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"> --}}
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<script src="/js/dashboard.js"></script>
