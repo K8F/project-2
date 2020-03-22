@@ -5,9 +5,15 @@ var deathEaterArray=[];
 getDeathEaters();
 
 
-var DeathEater = function (name, intelligence, hitpoints) {
+function getOpponent(arr) {
+    return (arr[Math.floor(Math.random() * arr.length)]);
+};
+
+
+var DeathEater = function (id, name, intelligence, hitpoints) {
+    this.id=id
     this.name = name;
-    this.Spell=[];
+    //this.Spell=[];
     //this.role = role;
     //this.stunned = false;
     this.intelligence = intelligence;
@@ -24,14 +30,18 @@ var DeathEater = function (name, intelligence, hitpoints) {
     this.printTest = function () {
         console.log("Name: " + this.name);
         console.log("\n-------------\n");
-    };
-    this.attack = function (){
-        for(var i=0; i<spellsArray.length;i++)
-        if (Spell.chtype==="opponent"){
-            console.log(Spell[i])
-        }
 
-    }
+        
+    };
+
+ 
+    // this.attack = function (){
+    //     for(var i=0; i<spellsArray.length;i++)
+    //     if (Spell.chtype==="opponent"){
+    //         console.log(Spell[i])
+    //     }
+
+    // }
 
 
     // this.attack ===>  if you loose then your experie decre 
@@ -81,7 +91,7 @@ function getDeathEaters() {
                 if (response[i].deathEater === true) {
                    // deathEaterArray.push({ name: response[i].name, });
                    // use random
-                    deathEaterArray.push(new DeathEater(response[i].name, 100 + i, 50))
+                    deathEaterArray.push(new DeathEater(i, response[i].name, 100 + i, 50))
                 };
 
                                
@@ -89,7 +99,9 @@ function getDeathEaters() {
             
             console.log(deathEaterArray);
 
+
         });
+        console.log(getOpponent(deathEaterArray))
 
 
     };
