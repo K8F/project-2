@@ -118,11 +118,20 @@ var Combat={
     }, 
 
     opponentAttack: function(){
-        for (var i=0; i<spellsArray.length;i++){
-            if (spellsArray[i].chtype==="opponent" && spellsArray[i].difficulty==="easy"){
-                console.log(spellsArray[i]);
-            }
+        if (Math.floor(Math.random()*20 + 1)==1){
+            console.log("spell cast: " + spellsArray[1].name)
+        } else if (Math.floor(Math.random()*10 + 1)==1){
+            console.log("spell cast: " + spellsArray[5].name);
+        } else if (Math.floor(Math.random()*4 + 1)==1){
+            console.log("spell cast: " + spellsArray[3].name);
+        } else {
+            console.log ("spell cast: " + spellsArray[2].name)
         }
+        // for (var i=0; i<spellsArray.length;i++){
+        //     if (spellsArray[i].chtype==="opponent" && spellsArray[i].difficulty==="easy"){
+        //         console.log(spellsArray[i]);
+        //     }
+        // }
     },
 
     opponentAttackEasy: function (){
