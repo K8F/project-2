@@ -4,7 +4,7 @@ var exphbs = require("express-handlebars");
 var bodyParser = require("body-parser");
 var db = require("./models");
 var authRoutes = require('./routes/auth-routes');
-// var bcrypt = require("bcrypt");
+const passportSetup = require("./config/passport-setup");
 
 var app = express();
 var PORT = process.env.PORT || 3000;
