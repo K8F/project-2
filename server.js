@@ -1,8 +1,10 @@
 require("dotenv").config();
 var express = require("express");
 var exphbs = require("express-handlebars");
-
+var bodyParser = require("body-parser");
 var db = require("./models");
+var authRoutes = require('./routes/auth-routes');
+// var bcrypt = require("bcrypt");
 
 var app = express();
 var PORT = process.env.PORT || 3000;
@@ -22,8 +24,11 @@ app.engine(
 app.set("view engine", "handlebars");
 
 // Routes
+app.use("/auth", authRoutes);
 require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
+
+// require("./routes/auth-routes")(app);
 
 var syncOptions = { force: false };
 
@@ -32,6 +37,9 @@ var syncOptions = { force: false };
 if (process.env.NODE_ENV === "test") {
   syncOptions.force = true;
 }
+
+
+
 
 // Starting the server, syncing our models ------------------------------------/
 db.sequelize.sync(syncOptions).then(function() {
@@ -45,3 +53,4 @@ db.sequelize.sync(syncOptions).then(function() {
 });
 
 module.exports = app;
+
