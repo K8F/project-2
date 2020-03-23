@@ -51,9 +51,8 @@ var GameManager={
 var Combat={
     playerAttackEasy: function(){
         var totalDamage=test.intelligence;
-        console.log(totalDamage)
-        if (spellsArray[2].difficulty==="easy"){
         deathEaterArray[0].hitpoints=deathEaterArray[0].hitpoints-totalDamage;
+        if (spellsArray[2].difficulty==="easy"){
         console.log("you hit your opponent! opponent health: " + deathEaterArray[0].hitpoints);
         
         if (deathEaterArray[0].hitpoints <= 0){
@@ -170,6 +169,16 @@ var Combat={
         }
 
     }, 
+
+    playerRun: function(){
+        var run = Math.floor(Math.random()*2+1);
+        if(run==1){
+            console.log("success!")
+        }
+        else{
+            Combat.opponentAttack()
+        }
+    },
 
     opponentAttack: function(){
         if (Math.floor(Math.random()*50 + 1)==1){

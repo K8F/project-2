@@ -8,6 +8,7 @@ var $battleEventsDiv = $("#battleEvents")
 
 $spellOneBtn.on("click", function() {
   $battleEventsDiv.text("Spell 1 activate");
+  
 })
 $spellTwoBtn.on("click", function() {
   $battleEventsDiv.text("Spell 2 activate");
