@@ -5,7 +5,8 @@ var deathEaterArray=[];
 getDeathEaters();
 
 
-function getOpponent(arr) {
+function  getOpponent(arr) {
+     
     return (arr[Math.floor(Math.random() * arr.length)]);
 };
 
@@ -98,10 +99,10 @@ function getDeathEaters() {
             };
             
             console.log(deathEaterArray);
+            console.log(getOpponent(deathEaterArray))
 
 
         });
-        console.log(getOpponent(deathEaterArray))
 
 
     };
