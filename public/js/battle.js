@@ -178,12 +178,11 @@ function getDeathEaters() {
 
 
   //player object (temporary);
-var Player = function (id, name, intelligence, hitpoints, defense, experience, house, location, agility, history) {
+var Player = function (id, name, intelligence, hitpoints, experience, house, location, agility, history) {
   this.id=id;
   this.name = name;
   this.intelligence = intelligence;
   this.hitpoints = hitpoints;
-  this.defense=defense;
   this.experience = experience;
   this.house = house;
   this.location=location;
@@ -208,13 +207,13 @@ var Combat={
       $("#enemyHP").text(" " + enemy.hitpoints);
       
       //checks if enemy has lost all hitpoints; if yes, player wins
-      if (deathEaterArray[0].hitpoints <= 0){
+      if (enemy.hitpoints <= 0){
         $("#resultModalBody").text("You Win!");
         $('#myModal').modal('toggle');
 
         //checks to see if player has any defense built up
-      } else if(test.defense > 0){
-          test.defense--}
+      } else if(defense > 0){
+          defense--}
           else{
 
             function doAdelay(){
@@ -234,9 +233,9 @@ var Combat={
 
           console.log(x);
           if (x===1){
-              deathEaterArray[0].hitpoints = deathEaterArray[0].hitpoints - totalDamage;
+              enemy.hitpoints = enemy.hitpoints - totalDamage;
               $battleEventsDiv.text("You cast " + spellsArray[6].name + "!");
-              $("#enemyHP").text(" " + deathEaterArray[0].hitpoints);
+              $("#enemyHP").text(" " + enemy.hitpoints);
 
           }
           else{
@@ -244,12 +243,12 @@ var Combat={
           }
 
       };
-      if (deathEaterArray[0].hitpoints <= 0){
+      if (enemy.hitpoints <= 0){
         $("#resultModalBody").text("You Win!");
         $('#myModal').modal('toggle');
 
-      } else if(test.defense > 0){
-          test.defense--}
+      } else if(defense > 0){
+          defense--}
           else{
             function doAdelay(){
               setTimeout(function(){Combat.opponentAttack()},2000);
@@ -266,7 +265,7 @@ var Combat={
           var totalDamage= test.intelligence * 3;
           console.log(x);
           if (x===1){
-              deathEaterArray[0].hitpoints = deathEaterArray[0].hitpoints - totalDamage;
+              enemy.hitpoints = enemy.hitpoints - totalDamage;
               $battleEventsDiv.text("You cast " + spellsArray[0].name + "!"); 
 
           }
@@ -276,11 +275,11 @@ var Combat={
 
       }
 
-      if (deathEaterArray[0].hitpoints <= 0){
+      if (enemy.hitpoints <= 0){
         $("#resultModalBody").text("You Win!");
         $('#myModal').modal('toggle');
-      } else if(test.defense > 0){
-          test.defense--}
+      } else if(defense > 0){
+          defense--}
           else{
             function doAdelay(){
               setTimeout(function(){Combat.opponentAttack()},2000);
@@ -290,14 +289,13 @@ var Combat={
   },
 
   playerDefend: function (){
-      if (spellsArray[7].effect==="defense"){
           var x= Math.floor(Math.random()* 2+ 1);
           console.log(x);
           if (x===1){
-              test.defense=Math.floor(Math.random()*3+1)
-              $battleEventsDiv.text("Nice block! Enjoy a few extra rounds:  " + test.defense);
+              defense=Math.floor(Math.random()*3+1)
+              $battleEventsDiv.text("Nice block! Enjoy a few extra rounds:  " + defense);
           }
-          else if (deathEaterArray[0].hitpoints <= 0){
+          else if (enemy.hitpoints <= 0){
             $("#resultModalBody").text("You Win!");
             $('#myModal').modal('toggle');
           } else{
@@ -308,7 +306,7 @@ var Combat={
             doAdelay();
           };
 
-      }
+      
 
       
 
@@ -324,7 +322,7 @@ var Combat={
         heal--;
           test.hitpoints+=healing
           $battleEventsDiv.text("You've replinished " + healing + "HP.");
-          if (deathEaterArray[0].hitpoints <= 0){
+          if (enemy.hitpoints <= 0){
             $("#resultModalBody").append("You Win!");
             $('#myModal').modal('toggle');
           } else if(test.defense > 0){
@@ -363,7 +361,7 @@ var Combat={
 
 
       } else if (Math.floor(Math.random()*20 + 1)==1){
-          var totalDamage= deathEaterArray[0].intelligence * 3;
+          var totalDamage= enemy.intelligence * 3;
               $battleEventsDiv.text(spellsArray[5].name + "!"); 
               console.log("-----------")
               console.log("opponent's round")
@@ -373,13 +371,13 @@ var Combat={
 
       } else if (Math.floor(Math.random()*10 + 1)==1){
           $battleEventsDiv.text(spellsArray[3].name + "!"); 
-          var totalDamage= deathEaterArray[0].intelligence * 2;
+          var totalDamage= enemy.intelligence * 2;
           test.hitpoints=test.hitpoints-totalDamage;
           $("#yourHP").text(" " + test.hitpoints);
 
       } else if (Math.floor(Math.random()*2 + 1)==1){
           $battleEventsDiv.text(spellsArray[2].name + "!"); 
-          var totalDamage= deathEaterArray[0].intelligence;
+          var totalDamage= enemy.intelligence;
           test.hitpoints=test.hitpoints-totalDamage;
           $("#yourHP").text(" " + test.hitpoints);
 
