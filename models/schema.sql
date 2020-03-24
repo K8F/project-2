@@ -1,9 +1,5 @@
-drop database IF EXISTS hprpg;
-CREATE DATABASE hp_rpg;
-use hp_rpg;
-create table Users ( 
-UserID INT NOT NULL AUTO_INCREMENT,
-UserEmail varchar(255) UNIQUE NOT NULL,
-Password VARCHAR(25) NOT NULL,
-PRIMARY KEY (UserID, UserEmail)
-);
+DROP DATABASE IF EXISTS exampledb;
+CREATE DATABASE exampledb;
+
+DROP DATABASE IF EXISTS testdb;
+CREATE DATABASE testdb;
