@@ -1,23 +1,77 @@
-<div class="jumbotron">
-    <div class="container">
-        <h1 class="display-4">Hello, world!</h1>
-    <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-    <hr class="my-4">
-    <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-    <p class="lead">
-        <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-    </p>
-    </div>
+<div id="battle">
     <div class="jumbotron">
         <div class="container">
             <div class="row">
-                <div class="col btn btn-warning btn-lg">Spell 1</div>
-                <div class="col btn btn-danger btn-lg">Spell 2</div>
+                <div class="col">
+                    <p class="float-left text-light">Room: 1/1</p>
+                    <p class="float-right text-light">HP:<span id="enemyHP"></span></p>
+                </div>
+                <div class="col-4">
+                    <div class="battleCharacters ml-5">
+                        <img src="/images/deathEaterIcon.png" class="img-fluid">
+                    </div>
+                    <h3 class="text-light"><span id="enemyName">Name</span></h3>
+                </div>
             </div>
             <div class="row">
-                <div class="col btn btn-success btn-lg">Spell 3</div>
-                <a href="dashboard" class="col btn btn-primary btn-lg">Run</a>
+                <div class="col-2">
+                    <div class="battleCharacters">
+                        <img src="/images/wizardIcon.svg" class="img-fluid" style="max-width: 200%;">
+                    </div>
+                </div>
+                <div class="col pl-5">
+                    <p class="align-text-bottom ml-0 text-light">HP:<span id="yourHP"></span></p>
+                    <h3 class="text-light"><span id="yourName">Name</span></h3>
+                </div>
+            </div>
+            <div class="row py-3">
+                <div id="battleScreenText" class="col border rounded text-light">
+                    <p id="battleEvents"> Instructions: Let's kick some death eater butts! You have 3 defense spells. Green is the easiest and red is the hardest to cast; the harder the cast, the bigger the hit. Use the white spell for a chance to defend. You can also heal yourself twice in each battle with the blue spell. Good luck!</p>
+    
+                </div>
+            </row>
+        </div>
+    </div>
+        <div class="container">
+            <div class="row">
+                <img id="spellOne" src="/images/fire-ray.png" class="icons col btn btn-success mx-auto">
+                <img id="spellTwo" src="/images/moebius-star.png" class="icons col btn btn-warning mx-auto">
+                <img id="spellThree" src="/images/skull-bolt.png" class="icons col btn btn-danger mx-auto">
+                <img id="spellDefend" src="/images/magic-shield.png" class="icons col btn btn-light mx-auto">
+                <img id="spellHeal" src="/images/healing.png" class="icons col btn btn-info mx-auto">
+            </div>
+            <div class="row">
+                <a href="dashboard" class="col btn btn-dark ">Run</a>
             </div>
         </div>
+    </div>
 </div>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <h1>Results:</h1>
+        <h2 id="resultModalBody"></h2>
+
+        {{!-- <p class="text-center"><span id="upArrow" class="btn">&uarr;</span></p>
+        <p class="text-center"><span id="leftArrow" class="btn"> &larr;</span> Enter which room? <span id="rightArrow" class="btn"> &rarr;</span</p>
+        <p class="text-center"><span id="homeBtn" class="btn"><i class="fa fa-home"></i></span></p> --}}
+        
+      </div>
+    </div>
+  </div>
 </div>
+<div id="bg">
+    <img id="bgImg" src="/images/battleBackground.jpg" alt="">
+</div>
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<script src="/js/battle.js"></script>
