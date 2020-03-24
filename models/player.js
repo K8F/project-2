@@ -5,7 +5,7 @@ module.exports = function(sequelize, DataTypes) {
       //photo:DataTypes.STRING,
       intelligence: DataTypes.INTEGER,
       hitpoints: DataTypes.INTEGER,
-      defense: DataTypes.INTEGER
+      //defense: DataTypes.INTEGER
       //experience: DataTypes.INTEGER,
       //agility: DataTypes.INTEGER,
       //house: DataTypes.STRING,

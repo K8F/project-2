@@ -4,25 +4,40 @@ var $spellOneBtn = $("#spellOne");
 var $spellTwoBtn = $("#spellTwo");
 var $spellThreeBtn = $("#spellThree");
 // var $leftArrow = $("#leftArrow");
+var $spellDefendBtn = $("#spellDefend");
+var $spellHealBtn = $("#spellHeal");
 
 //this is where the spells and fighting appear
 var $battleEventsDiv = $("#battleEvents")
 
+window.onload = function() {
+  this.$battleEventsDiv.text("you loaded me")
+};
 //green button (easy)
 $spellOneBtn.on("click", function() {
   Combat.playerAttackEasy();
-})
+});
 
 //orange button (medium)
 $spellTwoBtn.on("click", function() {
   Combat.playerAttackMedium();
-})
+});
 
 //red button (hard)
 $spellThreeBtn.on("click", function() {
   Combat.playerAttackHard();
 
-})
+});
+
+$spellDefendBtn.on("click", function(){
+  Combat.playerDefend();
+});
+
+$spellHealBtn.on("click", function(){
+  Combat.playerHeal();
+});
+
+heal=2;
 
 // $leftArrow.on("click", function() {
 //   alert("Go to the room at the left!");
@@ -67,7 +82,7 @@ function getSpells(){
             spellsArray.push (new Spell(response[53].spell, "player", "easyLimited", "heal"));
 
 
-            console.log(spellsArray)
+            //console.log(spellsArray)
 
         });
 
@@ -76,7 +91,7 @@ function getSpells(){
 
 };
 
-//player object
+//player object (temporary);
 var Player = function (id, name, intelligence, hitpoints, defense, experience, house, location, agility, history) {
   this.id=id;
   this.name = name;
@@ -100,7 +115,7 @@ getSpells();
 var Combat={
   playerAttackEasy: function(){
       //display spell
-      $battleEventsDiv.text(spellsArray[4].name + "!");
+      $battleEventsDiv.text("You cast " + spellsArray[4].name + "!");
       
       //calculating hit- total damage == player's intelligence
       var totalDamage=test.intelligence;
@@ -110,7 +125,7 @@ var Combat={
       
       //checks if enemy has lost all hitpoints; if yes, player wins
       if (deathEaterArray[0].hitpoints <= 0){
-        $("#resultModalBody").append("You Win!");
+        $("#resultModalBody").text("You Win!");
         $('#myModal').modal('toggle');
 
         //checks to see if player has any defense built up
@@ -136,7 +151,7 @@ var Combat={
           console.log(x);
           if (x===1){
               deathEaterArray[0].hitpoints = deathEaterArray[0].hitpoints - totalDamage;
-              $battleEventsDiv.text(spellsArray[6].name + "!");
+              $battleEventsDiv.text("You cast " + spellsArray[6].name + "!");
               $("#enemyHP").text(" " + deathEaterArray[0].hitpoints);
 
           }
@@ -146,7 +161,7 @@ var Combat={
 
       };
       if (deathEaterArray[0].hitpoints <= 0){
-        $("#resultModalBody").append("You Win!");
+        $("#resultModalBody").text("You Win!");
         $('#myModal').modal('toggle');
 
       } else if(test.defense > 0){
@@ -168,9 +183,7 @@ var Combat={
           console.log(x);
           if (x===1){
               deathEaterArray[0].hitpoints = deathEaterArray[0].hitpoints - totalDamage;
-              //console.log("true")
-              $battleEventsDiv.text(spellsArray[0].name + "!"); 
-              console.log("you hit your opponent! opponent health: " + (deathEaterArray[0].hitpoints))
+              $battleEventsDiv.text("You cast " + spellsArray[0].name + "!"); 
 
           }
           else{
@@ -180,7 +193,7 @@ var Combat={
       }
 
       if (deathEaterArray[0].hitpoints <= 0){
-        $("#resultModalBody").append("You Win!");
+        $("#resultModalBody").text("You Win!");
         $('#myModal').modal('toggle');
       } else if(test.defense > 0){
           test.defense--}
@@ -197,16 +210,14 @@ var Combat={
           var x= Math.floor(Math.random()* 2+ 1);
           console.log(x);
           if (x===1){
-              console.log("true")
               test.defense=Math.floor(Math.random()*3+1)
-              console.log("you're safe! player has extra rounds: " + test.defense)
-
+              $battleEventsDiv.text("Nice block! Enjoy a few extra rounds:  " + test.defense);
           }
           else if (deathEaterArray[0].hitpoints <= 0){
-            $("#resultModalBody").append("You Win!");
+            $("#resultModalBody").text("You Win!");
             $('#myModal').modal('toggle');
           } else{
-              alert("defend didn't work!")
+              $battleEventsDiv.text("Block didn't work. Better luck next time!")
               function doAdelay(){
                 setTimeout(function(){Combat.opponentAttack()},2000);
             };
@@ -220,30 +231,32 @@ var Combat={
   },
 
   playerHeal: function (){
-      heal--;
-      console.log("heal: " + heal)
       //need to figure out how to make sure player doesn't go over initial hitpoint count
-      var healing = Math.floor(Math.random()* 4+ 1);
-      console.log("healing: " + healing)
-      if (heal > 0){
+      var healing = Math.floor(Math.random()* 10+ 1);
+      console.log(heal);
+      if (heal<=0){
+        $battleEventsDiv.text("Sorry, you're out of health spells. Cast a spell at your opponent, or try defending yourself to gain a few extra rounds.")
+      } else{
+        heal--;
           test.hitpoints+=healing
-          console.log("random healing number: " + healing)
-          console.log("current hit points: " + test.hitpoints)
-
+          $battleEventsDiv.text("You've replinished " + healing + "HP.");
+          if (deathEaterArray[0].hitpoints <= 0){
+            $("#resultModalBody").append("You Win!");
+            $('#myModal').modal('toggle');
+          } else if(test.defense > 0){
+              test.defense--}
+              else{
+                function doAdelay(){
+                  setTimeout(function(){Combat.opponentAttack()},2000);
+              };
+              doAdelay();
+          }
       }
 
-      else{
-          alert("no more!")
-      };
+          
+    
 
-      if (deathEaterArray[0].hitpoints <= 0){
-        $("#resultModalBody").append("You Win!");
-        $('#myModal').modal('toggle');
-      } else if(test.defense > 0){
-          test.defense--}
-          else{
-          Combat.opponentAttack();
-      }
+      
 
   }, 
 
