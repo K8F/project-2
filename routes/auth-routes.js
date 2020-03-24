@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const passport = require("passport");
-
+const GoogleStrategy = require("passport-google-oauth20");
 
 // auth login
 router.get("/login", (req,res) => {

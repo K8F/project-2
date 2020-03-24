@@ -25,6 +25,7 @@ app.set("view engine", "handlebars");
 
 // Routes
 app.use("/auth", authRoutes);
+// require("/auth","./routes/auth-routes")(app);
 require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
 
