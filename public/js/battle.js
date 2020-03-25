@@ -6,6 +6,7 @@ var $spellThreeBtn = $("#spellThree");
 // var $leftArrow = $("#leftArrow");
 var $spellDefendBtn = $("#spellDefend");
 var $spellHealBtn = $("#spellHeal");
+var $runBtn=("$#run")
 
 //this is where the spells and fighting appear
 var $battleEventsDiv = $("#battleEvents") 
@@ -26,7 +27,10 @@ enemy = getOpponent(deathEaterArray);
 // window.onload = function() {
   this.$playerNameDiv.text(test.name)
   this.$enemyNameDiv.text(enemy.name);
+  $("#yourHP").text(" " + test.hitpoints)
   $("#enemyHP").text(" " + enemy.hitpoints);
+  $("#yourDefense").text(" " + defense)
+  $("#healingCount").text(" "+ heal);
 
   
 
@@ -54,6 +58,10 @@ $spellDefendBtn.on("click", function(){
 $spellHealBtn.on("click", function(){
   Combat.playerHeal();
 });
+
+// $runBtn.on("click", function(){
+//   Combat.playerRun();
+// });
 
 
 };
@@ -213,7 +221,9 @@ var Combat={
 
         //checks to see if player has any defense built up
       } else if(defense > 0){
-          defense--}
+          defense--
+          $("#yourDefense").text(" " + defense)
+        }
           else{
 
             function doAdelay(){
@@ -248,7 +258,9 @@ var Combat={
         $('#myModal').modal('toggle');
 
       } else if(defense > 0){
-          defense--}
+          defense--
+          $("#yourDefense").text(" " + defense)
+        }
           else{
             function doAdelay(){
               setTimeout(function(){Combat.opponentAttack()},2000);
@@ -279,7 +291,9 @@ var Combat={
         $("#resultModalBody").text("You Win!");
         $('#myModal').modal('toggle');
       } else if(defense > 0){
-          defense--}
+          defense--
+          $("#yourDefense").text(" " + defense)
+        }
           else{
             function doAdelay(){
               setTimeout(function(){Combat.opponentAttack()},2000);
@@ -294,6 +308,8 @@ var Combat={
           if (x===1){
               defense=Math.floor(Math.random()*3+1)
               $battleEventsDiv.text("Nice block! Enjoy a few extra rounds:  " + defense);
+              $("#yourDefense").text(" " + defense)
+
           }
           else if (enemy.hitpoints <= 0){
             $("#resultModalBody").text("You Win!");
@@ -319,14 +335,18 @@ var Combat={
       if (heal<=0){
         $battleEventsDiv.text("Sorry, you're out of health spells. Cast a spell at your opponent, or try defending yourself to gain a few extra rounds.")
       } else{
-        heal--;
+        heal--
+        $("#healingCount").text(" "+ heal);
+        ;
           test.hitpoints+=healing
           $battleEventsDiv.text("You've replinished " + healing + "HP.");
           if (enemy.hitpoints <= 0){
             $("#resultModalBody").append("You Win!");
             $('#myModal').modal('toggle');
           } else if(test.defense > 0){
-              test.defense--}
+              test.defense--
+              $("#yourDefense").text(" " + defense)
+            }
               else{
                 function doAdelay(){
                   setTimeout(function(){Combat.opponentAttack()},2000);
@@ -342,15 +362,17 @@ var Combat={
 
   }, 
 
-  playerRun: function(){
-      var run = Math.floor(Math.random()*2+1);
-      if(run==1){
-          console.log("success!")
-      }
-      else{
-          Combat.opponentAttack()
-      }
-  },
+  // playerRun: function(){
+  //     var run = Math.floor(Math.random()*2+1);
+  //     if(run==1){
+  //       $("#resultModalBody").text("You successfully ran away!");
+  //       $('#myModal').modal('toggle');
+  //     }
+  //     else{
+
+  //         Combat.opponentAttack()
+  //     }
+  // },
 
   opponentAttack: function(){
       if (Math.floor(Math.random()*50 + 1)==1){

@@ -7,6 +7,8 @@ var passportSetup= require("./config/passportSetup");
 var db = require("./models");
 
 var app = express();
+var session = require('express-session');
+var bodyParser = require('body-parser')
 var PORT = process.env.PORT || 3000;
 
 // Middleware
@@ -14,6 +16,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(express.static("public"));
 app.use('/auth', authRoutes);
+app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.json());
+app.use(session({secret: 'keyboard cat', resave: true, saveUninitialized: true}))//session secret
 
 // Handlebars
 app.engine(
