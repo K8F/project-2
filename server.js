@@ -5,9 +5,12 @@ var bodyParser = require("body-parser");
 var authRoutes=require('./routes/authRoutes');
 var passportSetup= require("./config/passportSetup");
 var db = require("./models");
+var keys=require("./config/keys")
+//var cookieSession = require("cookie-session");
+var passport = require("passport");
 
 var app = express();
-var session = require('express-session');
+//var session = require('express-session');
 var bodyParser = require('body-parser')
 var PORT = process.env.PORT || 3000;
 
@@ -18,7 +21,15 @@ app.use(express.static("public"));
 app.use('/auth', authRoutes);
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
-app.use(session({secret: 'keyboard cat', resave: true, saveUninitialized: true}))//session secret
+//app.use(session({secret: 'keyboard cat', resave: true, saveUninitialized: true}))//session secret
+app.use(cookieSession({
+  maxAge: 24 * 60 * 60 * 1000,
+  keys:[keys.session.cookieKey]
+}));
+
+//initialize passport
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Handlebars
 app.engine(
