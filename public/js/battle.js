@@ -22,6 +22,7 @@ var enemy;
 
 
 function startGame(){
+heal=2;
 enemy = getOpponent(deathEaterArray);  
 // window.onload = function() {
   //this.$playerNameDiv.text(test.name)
@@ -406,21 +407,21 @@ var Combat={
 
   opponentAttack: function(){
       if (Math.floor(Math.random()*50 + 1)==1){
-          $battleEventsDiv.text(spellsArray[1].name + "!"); 
+          $battleEventsDiv.text("Opponent cast a spell: " + spellsArray[1].name + "!"); 
           resolveFight(window.localStorage.getItem('hitpoints'));
 
 
       } else if (Math.floor(Math.random()*20 + 1)==1){
-              $battleEventsDiv.text(spellsArray[5].name + "!"); 
+              $battleEventsDiv.text("Opponent cast a spell: " + spellsArray[5].name + "!"); 
               resolveFight(enemy.intelligence * 3)
               
 
       } else if (Math.floor(Math.random()*10 + 1)==1){
-          $battleEventsDiv.text(spellsArray[3].name + "!"); 
+          $battleEventsDiv.text("Opponent cast a spell: " + spellsArray[3].name + "!"); 
           resolveFight(enemy.intelligence * 2)
 
       } else if (Math.floor(Math.random()*2 + 1)==1){
-          $battleEventsDiv.text(spellsArray[2].name + "!"); 
+          $battleEventsDiv.text("Opponent cast a spell: " + spellsArray[2].name + "!"); 
           resolveFight(enemy.intelligence)
 
       } else{
