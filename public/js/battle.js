@@ -13,15 +13,15 @@ var $battleEventsDiv = $("#battleEvents")
 var $playerNameDiv= $("#yourName");
 var $enemyNameDiv = $("#enemyName");
 
-var heal=2;
+var heal;
 var defense=window.localStorage.getItem('defense');
 var deathEaterArray=[];
 
 var enemy;
 
-function startGame()
-{
 
+
+function startGame(){
 enemy = getOpponent(deathEaterArray);  
 // window.onload = function() {
   //this.$playerNameDiv.text(test.name)
@@ -36,7 +36,9 @@ enemy = getOpponent(deathEaterArray);
 // };
 //green button (easy)
 $spellOneBtn.on("click", function() {
-  Combat.playerAttackEasy();
+  //Combat.playerAttackEasy();
+  $('#myModal').modal('toggle');
+
 });
 
 //orange button (medium)
@@ -64,6 +66,17 @@ $spellHealBtn.on("click", function(){
 
 
 };
+
+$('#myModal').on("hide.bs.modal", function(){
+heal = 2;
+defense=0;
+window.localStorage.setItem('hitpoints', '150');
+$("#yourHP").text(150);
+startGame();
+})
+
+
+
 
 
 var x = document.cookie.split(';').reduce((cookieObject, cookieString) => {
