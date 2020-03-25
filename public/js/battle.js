@@ -74,8 +74,9 @@ $spellHealBtn.on("click", function(){
 // })
 
 //api calls
-var key = "$2a$10$9TJcV993TdR154smSIsF5e1Lqac..133PduyWSTXpWEG5tw.SG.1y"
+
 var queryURL = "https://www.potterapi.com/v1/";
+var key= "$2a$10$9TJcV993TdR154smSIsF5e1Lqac..133PduyWSTXpWEG5tw.SG.1y"
 
 //array that holds spells pulled from hp api
 var spellsArray=[];
