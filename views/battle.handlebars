@@ -22,8 +22,8 @@
                 </div>
                 <div class="col-4 pl-5">
                     <h3 class="text-light"><span id="yourName">Name</span></h3>
-                    <p class="align-text-bottom ml-0 text-light">HP: <span id="yourHP">15/15</span></p>
-                    <p class="rounded text-dark bg-light"> Defense Buff: +<span id="yourDefense"></span></p>
+                    <p class="align-text-bottom ml-0 text-light">HP: <span id="yourHP"></span></p>
+                    <p class="rounded text-dark bg-light"> Defense Buff: <span id="yourDefense"></span></p>
                     <p class="rounded text-light bg-info"> Healing Spells Left:<span id="healingCount"></span></p>
                 </div>
             </div>
@@ -44,7 +44,7 @@
                 <img id="spellHeal" src="/images/healing.png" class="icons col btn btn-info mx-auto">
             </div>
             <div class="row">
-                <a href="dashboard" class="col btn btn-dark ">Run</a>
+                <a href="dashboard" class="col btn btn-dark " id="run">Run</a>
             </div>
         </div>
     </div>
@@ -55,12 +55,8 @@
     <div class="modal-content">
       <div class="modal-body bg-secondary text-light rounded">
         <h1>Results:</h1>
-<<<<<<< HEAD
         <h2 id="resultModalBody"></h2>
 
-=======
-        <h2 id="resultModalBody">You won!/lost!/Ran away successfully!/Can't Run!</h2>
->>>>>>> a7151b3da8cf47aa2c1da041415d61965aa5c6e1
         {{!-- <p class="text-center"><span id="upArrow" class="btn">&uarr;</span></p>
         <p class="text-center"><span id="leftArrow" class="btn"> &larr;</span> Enter which room? <span id="rightArrow" class="btn"> &rarr;</span</p>
         <p class="text-center"><span id="homeBtn" class="btn"><i class="fa fa-home"></i></span></p> --}}
