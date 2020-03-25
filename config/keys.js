@@ -1,7 +1,5 @@
 
 
-
-
 module.exports={
     google:{
         clientID: process.env.google_clientID,
