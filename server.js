@@ -3,6 +3,7 @@ var express = require("express");
 var exphbs = require("express-handlebars");
 var bodyParser = require("body-parser");
 var authRoutes=require('./routes/authRoutes');
+var profileRoutes=require('./routes/profileRoutes');
 var passportSetup= require("./config/passportSetup");
 var db = require("./models");
 var keys=require("./config/keys")
@@ -10,8 +11,11 @@ var cookieSession = require("cookie-session");
 var passport = require("passport");
 
 var app = express();
-//var session = require('express-session');
-var bodyParser = require('body-parser')
+//initialize passport
+app.use(passport.initialize());
+app.use(passport.session());
+
+//ar session = require('express-session');
 var PORT = process.env.PORT || 3000;
 
 // Middleware
@@ -27,9 +31,6 @@ app.use(cookieSession({
   keys:[keys.session.cookieKey]
 }));
 
-//initialize passport
-app.use(passport.initialize());
-app.use(passport.session());
 
 // Handlebars
 app.engine(
@@ -42,6 +43,8 @@ app.set("view engine", "handlebars");
 
 // Routes
 app.use("/auth", authRoutes);
+app.use("/profile", profileRoutes);
+
 // require("/auth","./routes/auth-routes")(app);
 require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
