@@ -6,7 +6,7 @@ var authRoutes=require('./routes/authRoutes');
 var passportSetup= require("./config/passportSetup");
 var db = require("./models");
 var keys=require("./config/keys")
-//var cookieSession = require("cookie-session");
+var cookieSession = require("cookie-session");
 var passport = require("passport");
 
 var app = express();
