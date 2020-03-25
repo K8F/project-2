@@ -4,7 +4,7 @@ var keys = require("./keys");
 var db = require("../models");
 
 
-var Player = require("../models/player");
+//ar Player = require("../models/player");
 
 passport.serializeUser((user,done) => {
     done(null, user.id);
@@ -21,8 +21,8 @@ passport.use(new GoogleStrategy({
     //options for the google strategy
     callbackURL:"/auth/google/redirect",
     proxy:true,
-    clientID: "198738718570-ib760iqglcies7j9p20c82d6s7okn4rd.apps.googleusercontent.com",
-    clientSecret:"J1rUSV2eAr5Ysb0Y8VJAvr5I"
+    clientID: process.env.GOOGLE_CLIENT_ID,
+    clientSecret:process.env.GOOGLE_CLIENT_SECRET
 }, (accessToken, refreshToken, profile, done)=>{
     //check if user already exists in our db
 
@@ -37,7 +37,8 @@ passport.use(new GoogleStrategy({
                 googleid: profile.id,
                 name: profile.displayName,
                 intelligence: 5, //Change to random or however combat wasdlaksjd;askd
-                hitpoints: 150 //change later
+                hitpoints: 150, //change later
+                defense:0
             }).then((newPlayer) => {
                 console.log("New user Created: " + newPlayer);
                 done(null, newPlayer);

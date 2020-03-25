@@ -14,20 +14,19 @@ var $playerNameDiv= $("#yourName");
 var $enemyNameDiv = $("#enemyName");
 
 var heal=2;
-var defense=0;
+var defense=window.localStorage.getItem('defense');
 var deathEaterArray=[];
 
 var enemy;
-
 
 function startGame()
 {
 
 enemy = getOpponent(deathEaterArray);  
 // window.onload = function() {
-  this.$playerNameDiv.text(test.name)
+  //this.$playerNameDiv.text(test.name)
   this.$enemyNameDiv.text(enemy.name);
-  $("#yourHP").text(" " + test.hitpoints)
+  //$("#yourHP").text(" " + test.hitpoints)
   $("#enemyHP").text(" " + enemy.hitpoints);
   $("#yourDefense").text(" " + defense)
   $("#healingCount").text(" "+ heal);
@@ -67,7 +66,18 @@ $spellHealBtn.on("click", function(){
 };
 
 
+var x = document.cookie.split(';').reduce((cookieObject, cookieString) => {
+  let splitCookie = cookieString.split('=').map((cookiePart) => { cookiePart.trim() })
+  try {
+    cookieObject[splitCookie[0]] = JSON.parse(splitCookie[1])
+  } catch (error) {
+    cookieObject[splitCookie[0]] = splitCookie[1]
+  }
+  return cookieObject
+})
 
+console.log('--cookie---');
+console.log(x);
 
 // $leftArrow.on("click", function() {
 //   alert("Go to the room at the left!");
@@ -130,6 +140,22 @@ function getSpells(){
 //call spell function
 getSpells();
 
+function resolveFight(totalDamage){
+
+  //get current hitpoints from local storage
+  var currentHP = window.localStorage.getItem('hitpoints');
+
+  //add hitpoints from healing in function 
+  currentHP=currentHP-totalDamage;
+
+  //update hitpoints in local storage
+  window.localStorage.setItem('hitpoints', currentHP);
+
+  //diplay new result
+  $("#yourHP").text(" " + currentHP);
+  
+}
+
 
 var DeathEater = function (id, name, intelligence, hitpoints) {
   this.id=id
@@ -187,30 +213,30 @@ function getDeathEaters() {
 
 
   //player object (temporary);
-var Player = function (id, name, intelligence, hitpoints, experience, house, location, agility, history) {
-  this.id=id;
-  this.name = name;
-  this.intelligence = intelligence;
-  this.hitpoints = hitpoints;
-  this.experience = experience;
-  this.house = house;
-  this.location=location;
-  this.agility=agility;
-  this.history=[];
-};
+// var Player = function (id, name, intelligence, hitpoints, experience, house, location, agility, history) {
+//   this.id=id;
+//   this.name = name;
+//   this.intelligence = intelligence;
+//   this.hitpoints = hitpoints;
+//   this.experience = experience;
+//   this.house = house;
+//   this.location=location;
+//   this.agility=agility;
+//   this.history=[];
+// };
   
 //test player
-var test = new Player (1, "kate", 5, 100, 0, 2, "Hufflepuff", 0, 120, []);
+//var test = new Player (1, "kate", 5, 100, 0, 2, "Hufflepuff", 0, 120, []);
 
 
 //object holding all combat moves
 var Combat={
+
   playerAttackEasy: function(){
       //display spell
       $battleEventsDiv.text("You cast " + spellsArray[4].name + "!");
-      
       //calculating hit- total damage == player's intelligence
-      var totalDamage=test.intelligence;
+      var totalDamage=window.localStorage.getItem('intelligence');
       enemy.hitpoints=enemy.hitpoints-totalDamage;
       //update enemy hp
       $("#enemyHP").text(" " + enemy.hitpoints);
@@ -220,7 +246,7 @@ var Combat={
         $("#resultModalBody").text("You Win!");
         $('#myModal').modal('toggle');
 
-        //checks to see if player has any defense built up
+        //checks to see igef player has any defense built up
       } else if(defense > 0){
           defense--
           $("#yourDefense").text(" " + defense)
@@ -240,9 +266,9 @@ var Combat={
   playerAttackMedium: function(){
       if (spellsArray[6].difficulty==="medium"){
           var x= Math.floor(Math.random()* 2 + 1);
-          var totalDamage= test.intelligence * 2;
+          var intelligence=window.localStorage.getItem('intelligence')
+          var totalDamage= intelligence * 2;
 
-          console.log(x);
           if (x===1){
               enemy.hitpoints = enemy.hitpoints - totalDamage;
               $battleEventsDiv.text("You cast " + spellsArray[6].name + "!");
@@ -275,7 +301,8 @@ var Combat={
 
       if (spellsArray[0].difficulty==="hard"){
           var x= Math.floor(Math.random()* 3 + 1);
-          var totalDamage= test.intelligence * 3;
+          var intelligence=window.localStorage.getItem('intelligence')
+          var totalDamage= intelligence * 3;
           console.log(x);
           if (x===1){
               enemy.hitpoints = enemy.hitpoints - totalDamage;
@@ -331,7 +358,7 @@ var Combat={
 
   playerHeal: function (){
       //need to figure out how to make sure player doesn't go over initial hitpoint count
-      var healing = Math.floor(Math.random()* 10+ 1);
+      var healing = Math.floor(Math.random()* 15+ 1);
       console.log(heal);
       if (heal<=0){
         $battleEventsDiv.text("Sorry, you're out of health spells. Cast a spell at your opponent, or try defending yourself to gain a few extra rounds.")
@@ -339,13 +366,17 @@ var Combat={
         heal--
         $("#healingCount").text(" "+ heal);
         ;
-          test.hitpoints+=healing
+
+        //use a negative number to add hp
+        resolveFight(healing * -1);
+
+
           $battleEventsDiv.text("You've replinished " + healing + "HP.");
           if (enemy.hitpoints <= 0){
             $("#resultModalBody").append("You Win!");
             $('#myModal').modal('toggle');
-          } else if(test.defense > 0){
-              test.defense--
+          } else if(defense > 0){
+              defense--
               $("#yourDefense").text(" " + defense)
             }
               else{
@@ -357,60 +388,35 @@ var Combat={
       }
 
           
-    
-
-      
 
   }, 
 
-  // playerRun: function(){
-  //     var run = Math.floor(Math.random()*2+1);
-  //     if(run==1){
-  //       $("#resultModalBody").text("You successfully ran away!");
-  //       $('#myModal').modal('toggle');
-  //     }
-  //     else{
-
-  //         Combat.opponentAttack()
-  //     }
-  // },
 
   opponentAttack: function(){
       if (Math.floor(Math.random()*50 + 1)==1){
           $battleEventsDiv.text(spellsArray[1].name + "!"); 
-          var totalDamage= test.hitpoints
-          test.hitpoints=test.hitpoints-totalDamage;
-          $("#yourHP").text(" " + test.hitpoints);
+          resolveFight(window.localStorage.getItem('hitpoints'));
 
 
       } else if (Math.floor(Math.random()*20 + 1)==1){
-          var totalDamage= enemy.intelligence * 3;
               $battleEventsDiv.text(spellsArray[5].name + "!"); 
-              console.log("-----------")
-              console.log("opponent's round")
-              test.hitpoints=test.hitpoints-totalDamage;
-              $("#yourHP").text(" " + test.hitpoints);
-
+              resolveFight(enemy.intelligence * 3)
+              
 
       } else if (Math.floor(Math.random()*10 + 1)==1){
           $battleEventsDiv.text(spellsArray[3].name + "!"); 
-          var totalDamage= enemy.intelligence * 2;
-          test.hitpoints=test.hitpoints-totalDamage;
-          $("#yourHP").text(" " + test.hitpoints);
+          resolveFight(enemy.intelligence * 2)
 
       } else if (Math.floor(Math.random()*2 + 1)==1){
           $battleEventsDiv.text(spellsArray[2].name + "!"); 
-          var totalDamage= enemy.intelligence;
-          test.hitpoints=test.hitpoints-totalDamage;
-          $("#yourHP").text(" " + test.hitpoints);
+          resolveFight(enemy.intelligence)
 
       } else{
-        $battleEventsDiv.text("Oppnent Missed!"); 
-          $("#yourHP").text(" " + test.hitpoints);
-
+        $battleEventsDiv.text("Opponent Missed!"); 
+        resolveFight(0);
       }
 
-      if (test.hitpoints <=0){
+      if (window.localStorage.getItem('hitpoints') <=0){
 
         $("#resultModalBody").append("You Lose!");
         $('#myModal').modal('toggle');

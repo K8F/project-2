@@ -4,8 +4,8 @@ module.exports = function(sequelize, DataTypes) {
       name: DataTypes.STRING,
       //photo:DataTypes.STRING,
       intelligence: DataTypes.INTEGER,
-      hitpoints: DataTypes.INTEGER
-      //defense: DataTypes.INTEGER
+      hitpoints: DataTypes.INTEGER,
+      defense: DataTypes.INTEGER
       //experience: DataTypes.INTEGER,
       //agility: DataTypes.INTEGER,
       //house: DataTypes.STRING,
