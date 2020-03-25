@@ -1,7 +1,9 @@
 require("dotenv").config();
 var express = require("express");
 var exphbs = require("express-handlebars");
-
+var bodyParser = require("body-parser");
+var authRoutes=require('./routes/authRoutes');
+var passportSetup= require("./config/passportSetup");
 var db = require("./models");
 
 var app = express();
@@ -11,6 +13,7 @@ var PORT = process.env.PORT || 3000;
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(express.static("public"));
+app.use('/auth', authRoutes);
 
 // Handlebars
 app.engine(
@@ -22,8 +25,14 @@ app.engine(
 app.set("view engine", "handlebars");
 
 // Routes
+app.use("/auth", authRoutes);
+// require("/auth","./routes/auth-routes")(app);
 require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
+//require ('./routes/authRoutes')(app);
+
+
+// require("./routes/auth-routes")(app);
 
 var syncOptions = { force: false };
 
@@ -32,6 +41,9 @@ var syncOptions = { force: false };
 if (process.env.NODE_ENV === "test") {
   syncOptions.force = true;
 }
+
+
+
 
 // Starting the server, syncing our models ------------------------------------/
 db.sequelize.sync(syncOptions).then(function() {
@@ -45,3 +57,4 @@ db.sequelize.sync(syncOptions).then(function() {
 });
 
 module.exports = app;
+

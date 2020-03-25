@@ -1,13 +1,74 @@
 .list-group-item {
-    line-height: 2.5;
+    line-height: 1.5;
+    background-color: transparent;
 }
 
 .jumbotron {
-    height: 100vh;
+    margin-bottom: 0px;
+    background-color: #e9ebef54;
 }
 
-body {
-    margin: 0;
+#login,
+#battle {
+    margin: 10;
     height: 100%;
     overflow: hidden
+}
+
+#dashboard {
+    overflow-x: hidden;
+}
+
+#login {
+    background-color: rgba(128, 128, 128, 0.363);
+    background-image: url("../images/loginBackground.jpg");
+    background-size: cover;
+    background-blend-mode: luminosity;
+    position: fixed;
+    top: 0;
+    /* here is where you specify how low you want the image to start */
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.box {
+    background-color: rgba(211, 211, 211, 0.521);
+    margin-top: 10px;
+}
+
+#bg {
+    position: fixed;
+    top: -50%;
+    left: -50%;
+    width: 100%;
+    height: 200%;
+    overflow-x: hidden;
+}
+
+#bg,
+#bgImg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    min-width: 50%;
+    min-height: 50%;
+    z-index: -1;
+}
+
+.battleCharacters {
+    max-width: 100px;
+    max-height: 200px;
+}
+
+#battleScreenText {
+    background-color: lightslategray;
+}
+
+.icons {
+    max-width: 100px;
+    max-height: 100px;
 }

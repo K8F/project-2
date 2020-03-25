@@ -3,25 +3,25 @@ var db = require("../models");
 module.exports = function(app) {
   // Load index page
   app.get("/", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
+    db.Player.findAll({}).then(function(hp_rpg) {
       res.render("index", {
         msg: "Welcome!",
-        examples: dbExamples
+        examples: hp_rpg
       });
     });
   });
   app.get("/dashboard", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
+    db.Player.findAll({}).then(function(hp_rpg) {
       res.render("dashboard", {
-        examples: dbExamples
+        examples: hp_rpg
       });
     });
   });
 
   app.get("/battle", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
+    db.Player.findAll({}).then(function(hp_rpg) {
       res.render("battle", {
-        examples: dbExamples
+        examples: hp_rpg
       });
     });
   });
@@ -36,7 +36,7 @@ module.exports = function(app) {
   });
 
   // Render 404 page for any unmatched routes
-  app.get("*", function(req, res) {
+  app.get("*", function(req, res) {  
     res.render("404");
   });
 };
