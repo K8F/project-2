@@ -1,10 +1,14 @@
 require("dotenv").config();
 var express = require("express");
 var exphbs = require("express-handlebars");
+var bodyParser = require("body-parser");
 var authRoutes=require('./routes/authRoutes');
 var passportSetup= require("./config/passportSetup");
 var db = require("./models");
+<<<<<<< HEAD
 var keys=require("./config/keys");
+=======
+>>>>>>> origin
 
 var app = express();
 var session = require('express-session');
@@ -30,10 +34,14 @@ app.engine(
 app.set("view engine", "handlebars");
 
 // Routes
+app.use("/auth", authRoutes);
+// require("/auth","./routes/auth-routes")(app);
 require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
 //require ('./routes/authRoutes')(app);
 
+
+// require("./routes/auth-routes")(app);
 
 var syncOptions = { force: false };
 
@@ -42,6 +50,9 @@ var syncOptions = { force: false };
 if (process.env.NODE_ENV === "test") {
   syncOptions.force = true;
 }
+
+
+
 
 // Starting the server, syncing our models ------------------------------------/
 db.sequelize.sync(syncOptions).then(function() {
@@ -55,3 +66,4 @@ db.sequelize.sync(syncOptions).then(function() {
 });
 
 module.exports = app;
+

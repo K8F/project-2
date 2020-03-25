@@ -1,8 +1,8 @@
 {
   "development": {
     "username": "root",
-    "password": "568csb8i",
-    "database": "exampledb",
+    "password": "password",
+    "database": "hp_rpg",
     "host": "localhost",
     "dialect": "mysql"
   },
