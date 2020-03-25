@@ -21,10 +21,14 @@ router.get('/google',passport.authenticate("google", {
 
 router.get("/google/redirect", passport.authenticate('google'),(req,res)=>{
     //res.send(req.user)
-    res.redirect("/profile/");
-
-
+    console.log("+++++++++++++")
+    console.log(req.user)
+    console.log("+++++++++++++")
+    req.app.set('user', res.req.user)
+    return res.redirect("/profile/");
+    //res.redirect("/profile/")
 })
+
 
 
 module.exports = router;

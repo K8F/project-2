@@ -12,6 +12,9 @@
     padding-bottom: 500px;
 }
 
+#welcomeText{
+    margin-top: 20px;
+}
 
 #login,
 #battle {

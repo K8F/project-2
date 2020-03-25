@@ -6,9 +6,9 @@ module.exports={
         clientSecret: process.env.google_clientSecret
     },
 
-    session:{
-        cookieKey: process.env.session
-    }
+    // session:{
+    //     cookieKey: process.env.session
+    // }
 
 };
 

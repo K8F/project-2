@@ -37,7 +37,7 @@ passport.use(new GoogleStrategy({
                 googleid: profile.id,
                 name: profile.displayName,
                 intelligence: 5, //Change to random or however combat wasdlaksjd;askd
-                hitpoints: 100 //change later
+                hitpoints: 150 //change later
             }).then((newPlayer) => {
                 console.log("New user Created: " + newPlayer);
                 done(null, newPlayer);

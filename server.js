@@ -28,7 +28,7 @@ app.use(bodyParser.json());
 //app.use(session({secret: 'keyboard cat', resave: true, saveUninitialized: true}))//session secret
 app.use(cookieSession({
   maxAge: 24 * 60 * 60 * 1000,
-  keys:[keys.session.cookieKey]
+  keys:"testingtesting123"
 }));
 
 
