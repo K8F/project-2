@@ -3,6 +3,7 @@ var GoogleStrategy= require('passport-google-oauth20');
 var keys = require("./keys");
 var db = require("../models");
 
+
 const Player = require("../models/player");
 
 passport.use(new GoogleStrategy({
@@ -11,19 +12,27 @@ passport.use(new GoogleStrategy({
     clientID: keys.google.clientID,
     clientSecret:keys.google.clientSecret
 }, (accessToken, refreshToken, profile, done)=>{
-    //passport callback function
-    console.log('passport callback function fired');
+    //check if user already exists in our db
 
-    // console.log(profile);
-
-    db.Player.create({
-        googleid: profile.id,
-        name: profile.displayName,
-        intelligence: 5, //Change to random or however combat wasdlaksjd;askd
-        hitpoints: 100 //change later
-    }).then((newUser) => {
-        console.log("New user Created: " + newUser);
+    db.Player.findOne({where: {googleID:profile.id}}).then((currentUser) => {
+        if(currentUser){
+            //already have player
+            console.log("player is", currentUser);
+        } else{
+            // if not, create player in our db
+            db.Player.create({
+                googleid: profile.id,
+                name: profile.displayName,
+                intelligence: 5, //Change to random or however combat wasdlaksjd;askd
+                hitpoints: 100 //change later
+            }).then((newUser) => {
+                console.log("New user Created: " + newUser);
+            });
+        }
     });
+
+
+    
 
 })
 )
