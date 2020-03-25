@@ -6,9 +6,15 @@
           {{!-- <p>Add Character</p>
           <button id="addCharacter" type="button" class="btn btn-outline-primary mx-auto">+</button>
           <p>House Points: <span id="housePoints"></span></p> --}}
+                  <h2>Welcome {{name}}!</h2>
+
         </div>
         <div id="charList" class="col-md-8 col-sm-12 pt-5">
-          <h3>Player Stats:</h3>
+          <h3>Your Stats:</h3>
+            <ul>
+              <li>HP: {{hitpoints}}</li>
+              <li>Intelligence: {{intelligence}}</li>
+           
           {{!-- {{#each examples}}
             <h4>Character: <span>{{this.text}}</span></h4>
             <ul class="list-group list-group-flush">
