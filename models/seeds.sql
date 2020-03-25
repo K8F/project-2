@@ -1,1 +1,0 @@
-INSERT INTO Players (name,intelligence,hitpoints) VALUES ("Kate Foust",5,10)
