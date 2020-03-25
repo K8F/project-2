@@ -4,7 +4,18 @@ var keys = require("./keys");
 var db = require("../models");
 
 
-const Player = require("../models/player");
+var Player = require("../models/player");
+
+passport.serializeUser((user,done) => {
+    done(null, user.id);
+});
+
+passport.deserializeUser((id,done) => {
+    
+    db.Player.findByID(id).then((user) => {
+        done(null,user);
+    });
+});
 
 passport.use(new GoogleStrategy({
     //options for the google strategy
@@ -14,10 +25,11 @@ passport.use(new GoogleStrategy({
 }, (accessToken, refreshToken, profile, done)=>{
     //check if user already exists in our db
 
-    db.Player.findOne({where: {googleID:profile.id}}).then((currentUser) => {
-        if(currentUser){
+    db.Player.findOne({where: {googleID:profile.id}}).then((currentPlayer) => {
+        if(currentPlayer){
             //already have player
-            console.log("player is", currentUser);
+            console.log("player is", currentPlayer);
+            done(null, currentPlayer)
         } else{
             // if not, create player in our db
             db.Player.create({
@@ -25,8 +37,9 @@ passport.use(new GoogleStrategy({
                 name: profile.displayName,
                 intelligence: 5, //Change to random or however combat wasdlaksjd;askd
                 hitpoints: 100 //change later
-            }).then((newUser) => {
-                console.log("New user Created: " + newUser);
+            }).then((newPlayer) => {
+                console.log("New user Created: " + newPlayer);
+                done(null, newPlayer);
             });
         }
     });
