@@ -36,8 +36,7 @@ enemy = getOpponent(deathEaterArray);
 // };
 //green button (easy)
 $spellOneBtn.on("click", function() {
-  //Combat.playerAttackEasy();
-  $('#myModal').modal('toggle');
+  Combat.playerAttackEasy();
 
 });
 
