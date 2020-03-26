@@ -6,7 +6,7 @@ var $spellThreeBtn = $("#spellThree");
 // var $leftArrow = $("#leftArrow");
 var $spellDefendBtn = $("#spellDefend");
 var $spellHealBtn = $("#spellHeal");
-var $runBtn=("$#run")
+//var $runBtn=("$#run")
 
 //this is where the spells and fighting appear
 var $battleEventsDiv = $("#battleEvents") 
@@ -19,10 +19,10 @@ var deathEaterArray=[];
 
 var enemy;
 
-$runBtn.on("click", function(){
-  $("#resultModalBody").append("Game Reset!");
-  $('#myModal').modal('toggle');
-});
+// $runBtn.on("click", function(){
+//   $("#resultModalBody").append("Game Reset!");
+//   $('#myModal').modal('toggle');
+// });
 
 function startGame(){
 heal=2;
