@@ -6,11 +6,11 @@ router.get("/login", (req,res)=>{
 });
 
 //auth logout
-router.get('/logout', (req,res)=> {
+// router.get('/logout', (req,res)=> {
 
-    //handle with passport
-    res.send('logging out with google');
-})
+//     //handle with passport
+//     res.send('logging out with google');
+// })
 
 //auth with google
 router.get('/google',passport.authenticate("google", {
@@ -31,4 +31,4 @@ router.get("/google/redirect", passport.authenticate('google'),(req,res)=>{
 
 
 
-module.exports = router;
+module.exports = router; 

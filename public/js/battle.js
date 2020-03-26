@@ -321,6 +321,8 @@ var Combat={
           if (x===1){
               enemy.hitpoints = enemy.hitpoints - totalDamage;
               $battleEventsDiv.text("You cast " + spellsArray[0].name + "!"); 
+              $("#enemyHP").text(" " + enemy.hitpoints);
+
 
           }
           else{
