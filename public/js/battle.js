@@ -19,7 +19,10 @@ var deathEaterArray=[];
 
 var enemy;
 
-
+$runBtn.on("click", function(){
+  $("#resultModalBody").append("Game Reset!");
+  $('#myModal').modal('toggle');
+});
 
 function startGame(){
 heal=2;
@@ -60,9 +63,7 @@ $spellHealBtn.on("click", function(){
   Combat.playerHeal();
 });
 
-// $runBtn.on("click", function(){
-//   Combat.playerRun();
-// });
+
 
 
 };
