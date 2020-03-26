@@ -25,7 +25,9 @@ var enemy;
 // });
 
 function startGame(){
+ $battleEventsDiv.html("Instructions: Let's kick some death eater butts! You have 3 defense spells. Green is the easiest and red is the hardest to cast; the harder the cast, the bigger the hit. Use the white spell for a chance to defend. You can also heal yourself twice in each battle with the blue spell. Good luck!"); 
 heal=2;
+//$battleEventsDiv.clear();
 enemy = getOpponent(deathEaterArray);  
 // window.onload = function() {
   //this.$playerNameDiv.text(test.name)
@@ -410,21 +412,21 @@ var Combat={
 
   opponentAttack: function(){
       if (Math.floor(Math.random()*50 + 1)==1){
-          $battleEventsDiv.text("Opponent cast a spell: " + spellsArray[1].name + "!"); 
+          $battleEventsDiv.text("Your opponent cast " + spellsArray[1].name + "!"); 
           resolveFight(window.localStorage.getItem('hitpoints'));
 
 
       } else if (Math.floor(Math.random()*20 + 1)==1){
-              $battleEventsDiv.text("Opponent cast a spell: " + spellsArray[5].name + "!"); 
+              $battleEventsDiv.text("Your opponent cast "  + spellsArray[5].name + "!"); 
               resolveFight(enemy.intelligence * 3)
               
 
       } else if (Math.floor(Math.random()*10 + 1)==1){
-          $battleEventsDiv.text("Opponent cast a spell: " + spellsArray[3].name + "!"); 
+          $battleEventsDiv.text("Your opponent cast "  + spellsArray[3].name + "!"); 
           resolveFight(enemy.intelligence * 2)
 
       } else if (Math.floor(Math.random()*2 + 1)==1){
-          $battleEventsDiv.text("Opponent cast a spell: " + spellsArray[2].name + "!"); 
+          $battleEventsDiv.text("Your opponent cast "  + spellsArray[2].name + "!"); 
           resolveFight(enemy.intelligence)
 
       } else{
