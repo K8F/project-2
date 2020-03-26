@@ -391,7 +391,7 @@ var Combat={
 
           $battleEventsDiv.text("You've replinished " + healing + "HP.");
           if (enemy.hitpoints <= 0){
-            $("#resultModalBody").append("You Win!");
+            $("#resultModalBody").text("You Win!");
             $('#myModal').modal('toggle');
           } else if(defense > 0){
               defense--
@@ -436,7 +436,7 @@ var Combat={
 
       if (window.localStorage.getItem('hitpoints') <=0){
 
-        $("#resultModalBody").append("You Lose!");
+        $("#resultModalBody").text("You Lose!");
         $('#myModal').modal('toggle');
           };        
   },
