@@ -47,7 +47,7 @@ app.use("/auth", authRoutes);
 app.use("/profile", profileRoutes);
 
 // require("/auth","./routes/auth-routes")(app);
-require("./routes/apiRoutes")(app);
+//require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
 //require ('./routes/authRoutes')(app);
 
