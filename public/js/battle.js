@@ -212,7 +212,6 @@ var Combat = {
 
   //50/50 chance
   playerAttackMedium: function () {
-    if (spellsArray[6].difficulty === "medium") {
       var chance = Math.floor(Math.random() * 2 + 1);
       var intelligence = window.localStorage.getItem("intelligence")
       var totalDamage = intelligence * 2;
@@ -225,9 +224,8 @@ var Combat = {
       }
       else {
         $battleEventsDiv.text("You Missed!")
-      }
+      };
 
-    };
     if (enemy.hitpoints <= 0) {
       $("#resultModalBody").text("You Win!");
       $("#myModal").modal("toggle");
@@ -247,8 +245,6 @@ var Combat = {
 
   //33% chance
   playerAttackHard: function () {
-
-    if (spellsArray[0].difficulty === "hard") {
       var chance = Math.floor(Math.random() * 3 + 1);
       var intelligence = window.localStorage.getItem("intelligence")
       var totalDamage = intelligence * 3;
@@ -262,9 +258,7 @@ var Combat = {
       }
       else {
         $battleEventsDiv.text("You missed!")
-      }
-
-    }
+      };
 
     if (enemy.hitpoints <= 0) {
       $("#resultModalBody").text("You Win!");
