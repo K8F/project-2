@@ -250,7 +250,7 @@ var Combat = {
 
     if (spellsArray[0].difficulty === "hard") {
       var chance = Math.floor(Math.random() * 3 + 1);
-      var intelligence = window.localStorage.getItem('intelligence')
+      var intelligence = window.localStorage.getItem("intelligence")
       var totalDamage = intelligence * 3;
 
       if (chance === 1) {
@@ -268,7 +268,7 @@ var Combat = {
 
     if (enemy.hitpoints <= 0) {
       $("#resultModalBody").text("You Win!");
-      $('#myModal').modal('toggle');
+      $("#myModal").modal("toggle");
     } else if (defense > 0) {
       defense--
       $("#yourDefense").text(" " + defense)
@@ -345,7 +345,7 @@ var Combat = {
   opponentAttack: function () {
     if (Math.floor(Math.random() * 50 + 1) == 1) {
       $battleEventsDiv.text("Your opponent cast " + spellsArray[1].name + "!");
-      resolveFight(window.localStorage.getItem('hitpoints'));
+      resolveFight(window.localStorage.getItem("hitpoints"));
 
 
     } else if (Math.floor(Math.random() * 20 + 1) == 1) {
